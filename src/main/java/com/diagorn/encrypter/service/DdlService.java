@@ -1,4 +1,4 @@
-package com.diagorn.encrypter.core.service;
+package com.diagorn.encrypter.service;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
