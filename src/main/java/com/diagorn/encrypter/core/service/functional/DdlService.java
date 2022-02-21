@@ -40,15 +40,11 @@ public class DdlService implements ApplicationContextAware {
      */
     @PostConstruct
     public void execute() {
-        try {
-            //getting all the DDL
-            String ddl = readSqlFile();
+        //getting all the DDL
+        String ddl = readSqlFile();
 
-            //executing one statement at one time
-            executeStatements(ddl);
-        } catch (Exception e) {
-
-        }
+        //executing one statement at one time
+        executeStatements(ddl);
     }
 
     /**
@@ -60,7 +56,7 @@ public class DdlService implements ApplicationContextAware {
         String[] statements = ddl.split(";");
         Session session = getSession();
         Transaction tx = session.beginTransaction();
-        for (String statement: statements) {
+        for (String statement : statements) {
             try {
                 tx = session.beginTransaction();
                 session.doWork(connection -> connection.createStatement().execute(statement));
