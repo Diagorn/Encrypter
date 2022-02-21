@@ -27,7 +27,7 @@ import java.io.FileReader;
 @Service
 @Transactional
 public class DdlService implements ApplicationContextAware {
-    @Value("ddl.file.name")
+    @Value("${ddl.file.name}")
     private String filename;
 
     private ApplicationContext applicationContext;
@@ -53,14 +53,13 @@ public class DdlService implements ApplicationContextAware {
      * @param ddl - string with statements
      */
     private void executeStatements(String ddl) {
-        String[] statements = ddl.split(";");
+        String[] statements = ddl.split("--split");
         Session session = getSession();
         Transaction tx = session.beginTransaction();
         for (String statement : statements) {
             try {
                 tx = session.beginTransaction();
                 session.doWork(connection -> connection.createStatement().execute(statement));
-                tx.commit();
             } catch (Exception e) {
                 logger.error("Exception while executing DDL commands. Context closing now");
                 SpringApplication.exit(applicationContext, () -> 0);
