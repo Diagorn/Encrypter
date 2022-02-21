@@ -1,4 +1,4 @@
-package com.diagorn.encrypter.core.service.functional;
+package com.diagorn.encrypter.core.service;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,7 +33,7 @@ public class DdlService implements ApplicationContextAware {
     private ApplicationContext applicationContext;
     @PersistenceContext
     private EntityManager entityManager;
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * Execute commands from the SQL file on the start of the application

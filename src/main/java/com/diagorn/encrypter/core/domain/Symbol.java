@@ -19,7 +19,7 @@ public class Symbol {
      **/
     @Id
     @Column(name = "SYMBOL")
-    private char symbol;
+    private Character symbol;
     /**
      * The language which contains the symbol
      */
@@ -42,11 +42,15 @@ public class Symbol {
     public Symbol() {
     }
 
-    public char getSymbol() {
+    public Symbol getSelf() {
+        return this;
+    }
+
+    public Character getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(char symbol) {
+    public void setSymbol(Character symbol) {
         this.symbol = symbol;
     }
 
