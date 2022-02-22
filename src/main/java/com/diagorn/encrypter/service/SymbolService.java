@@ -3,6 +3,10 @@ package com.diagorn.encrypter.service;
 import com.diagorn.encrypter.core.domain.KeyEnum;
 import com.diagorn.encrypter.core.domain.LanguageEnum;
 import com.diagorn.encrypter.core.domain.Symbol;
+import com.diagorn.encrypter.core.dto.SymbolDecryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolDecryptResponse;
+import com.diagorn.encrypter.core.dto.SymbolEncryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolEncryptResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -36,16 +40,15 @@ public interface SymbolService {
 
     /**
      * Encrypts the given text with a concrete key
-     * @param text - text for encrypting
-     * @param key - musical key
+     * @param request - request with text to encrypt
      * @return encrypted text
      */
-    List<Symbol> encryptText(String text, KeyEnum key);
+    SymbolEncryptResponse encryptText(SymbolEncryptRequest request);
 
     /**
      * Decrypts the given text
      * @param encrypted - list of encrypted symbols
      * @return
      */
-    String decryptText(List<Symbol> encrypted, KeyEnum key);
+    SymbolDecryptResponse decryptText(SymbolDecryptRequest request);
 }

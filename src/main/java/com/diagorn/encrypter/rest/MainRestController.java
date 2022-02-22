@@ -1,7 +1,9 @@
 package com.diagorn.encrypter.rest;
 
-import com.diagorn.encrypter.core.domain.KeyEnum;
-import com.diagorn.encrypter.core.domain.Symbol;
+import com.diagorn.encrypter.core.dto.SymbolDecryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolDecryptResponse;
+import com.diagorn.encrypter.core.dto.SymbolEncryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolEncryptResponse;
 import com.diagorn.encrypter.exception.SymbolNotSupportedException;
 import com.diagorn.encrypter.service.SymbolService;
 import org.slf4j.Logger;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * REST controller that handles the encryption and decryption process
@@ -30,9 +30,9 @@ public class MainRestController {
 
     @PostMapping("/encrypt")
     @ResponseBody
-    public List<Symbol> encrypt(String text, KeyEnum key) {
+    public SymbolEncryptResponse encrypt(SymbolEncryptRequest request) {
         try {
-            return symbolService.encryptText(text, key);
+            return symbolService.encryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
@@ -41,9 +41,9 @@ public class MainRestController {
 
     @PostMapping("/decrypt")
     @ResponseBody
-    public String decrypt(List<Symbol> encrypted, KeyEnum key) {
+    public SymbolDecryptResponse decrypt(SymbolDecryptRequest request) {
         try {
-            return symbolService.decryptText(encrypted, key);
+            return symbolService.decryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());

@@ -3,6 +3,10 @@ package com.diagorn.encrypter.service.impl;
 import com.diagorn.encrypter.core.domain.KeyEnum;
 import com.diagorn.encrypter.core.domain.LanguageEnum;
 import com.diagorn.encrypter.core.domain.Symbol;
+import com.diagorn.encrypter.core.dto.SymbolDecryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolDecryptResponse;
+import com.diagorn.encrypter.core.dto.SymbolEncryptRequest;
+import com.diagorn.encrypter.core.dto.SymbolEncryptResponse;
 import com.diagorn.encrypter.service.SymbolService;
 import com.diagorn.encrypter.repos.SymbolRepo;
 import org.springframework.stereotype.Service;
@@ -41,10 +45,12 @@ public class SymbolServiceImpl implements SymbolService {
     }
 
     @Override
-    public List<Symbol> encryptText(String text, KeyEnum key) {
-        LinkedList<Symbol> result = new LinkedList<>();
-        Map<Character, Symbol> keySymbols = getAllByKey(key);
+    public SymbolEncryptResponse encryptText(SymbolEncryptRequest request) {
+        SymbolEncryptResponse response = new SymbolEncryptResponse();
+        LinkedList<SymbolEncryptResponse.EncryptedSymbol> encryptedSymbols = response.getSymbols();
+        Map<Character, Symbol> keySymbols = getAllByKey(request.getKeyEnum());
 
+        String text = request.getText();
         text = text.toUpperCase();
         for (Character c: text.toCharArray()) {
             Symbol currentSymbol = keySymbols.get(c);
@@ -52,33 +58,37 @@ public class SymbolServiceImpl implements SymbolService {
                 throw new IllegalArgumentException("The symbol '" + c + "' is unknown");
             }
 
-            result.addLast(keySymbols.get(c));
+            encryptedSymbols.addLast(new SymbolEncryptResponse.EncryptedSymbol());
         }
 
-        return result;
+        return response;
     }
 
     @Override
-    public String decryptText(List<Symbol> encrypted, KeyEnum key) {
+    public SymbolDecryptResponse decryptText(SymbolDecryptRequest request) {
+        SymbolDecryptResponse response = new SymbolDecryptResponse();
         Map<Character, Symbol> allSymbols = getAllSymbols();
-        StringBuilder result = new StringBuilder();
+        StringBuilder resultText = new StringBuilder();
+        List<SymbolDecryptRequest.EncryptedSymbol> encrypted = request.getText();
+        KeyEnum key = request.getMusicalKey();
 
-        for (Symbol symbol: encrypted) {
-            Symbol actualSymbol = getSymbolByEncrypted(allSymbols, key, symbol);
+        for (SymbolDecryptRequest.EncryptedSymbol symbol: encrypted) {
+            Symbol actualSymbol = getSymbolByEncrypted(allSymbols, key, symbol.getText());
             if (actualSymbol == null) {
-                throw new IllegalArgumentException("Error during decryption! Unknown symbol: '" + symbol.getEncrypted() + "'");
+                throw new IllegalArgumentException("Error during decryption! Unknown symbol: '" + symbol.getText() + "'");
             }
 
-            result.append(actualSymbol.getSymbol());
+            resultText.append(actualSymbol.getSymbol());
         }
 
-        return result.toString();
+        response.setText(resultText.toString());
+        return response;
     }
 
-    private Symbol getSymbolByEncrypted(Map<Character, Symbol> allSymbols, KeyEnum key, Symbol encrypted) {
+    private Symbol getSymbolByEncrypted(Map<Character, Symbol> allSymbols, KeyEnum key, String encrypted) {
         for (Map.Entry<Character, Symbol> entry: allSymbols.entrySet()) {
             if (entry.getValue().getKey().equals(key)
-                    && entry.getValue().getEncrypted().equalsIgnoreCase(encrypted.getEncrypted())) {
+                    && entry.getValue().getEncrypted().equalsIgnoreCase(encrypted)) {
                 return entry.getValue();
             }
         }
