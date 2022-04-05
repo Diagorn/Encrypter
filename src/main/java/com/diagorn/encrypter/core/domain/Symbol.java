@@ -1,8 +1,5 @@
 package com.diagorn.encrypter.core.domain;
 
-import com.diagorn.encrypter.repos.converters.KeyEnumConverter;
-import com.diagorn.encrypter.repos.converters.LanguageEnumConverter;
-
 import javax.persistence.*;
 
 /**
@@ -25,7 +22,7 @@ public class Symbol {
      */
     @Id
     @Column(name = "LANG")
-    @Convert(converter = LanguageEnumConverter.class)
+    @Enumerated(value = EnumType.STRING)
     private LanguageEnum language;
     /**
      * Symbol encrypted representation
@@ -35,8 +32,8 @@ public class Symbol {
     /**
      * The key in which the symbol is encrypted
      */
-    @Column(name = "MUSIC_KEY")
-    @Convert(converter = KeyEnumConverter.class)
+    @Column(name = "MUSIC_KEY", columnDefinition = "VARCHAR")
+    @Enumerated(value = EnumType.STRING)
     private KeyEnum key;
 
     public Symbol() {

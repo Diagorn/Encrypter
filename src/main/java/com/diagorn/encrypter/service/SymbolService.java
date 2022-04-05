@@ -47,7 +47,7 @@ public interface SymbolService {
 
     /**
      * Decrypts the given text
-     * @param encrypted - list of encrypted symbols
+     * @param request - request with encrypted symbols
      * @return
      */
     SymbolDecryptResponse decryptText(SymbolDecryptRequest request);

@@ -8,10 +8,10 @@ import com.diagorn.encrypter.exception.SymbolNotSupportedException;
 import com.diagorn.encrypter.service.SymbolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 /**
  * REST controller that handles the encryption and decryption process
@@ -28,22 +28,34 @@ public class MainRestController {
         this.symbolService = symbolService;
     }
 
-    @PostMapping("/encrypt")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/encrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public SymbolEncryptResponse encrypt(SymbolEncryptRequest request) {
+    public SymbolEncryptResponse encrypt(@RequestBody SymbolEncryptRequest request) {
         try {
-            return symbolService.encryptText(request);
+            SymbolEncryptResponse response = new SymbolEncryptResponse();
+            response.setSymbols(new ArrayList<SymbolEncryptResponse.EncryptedSymbol>() {{
+                add(new SymbolEncryptResponse.EncryptedSymbol('А', "EGBD(FB)DBGE"));
+                add(new SymbolEncryptResponse.EncryptedSymbol('Б', "(FDBGE)(FBE)(FG)"));
+                add(new SymbolEncryptResponse.EncryptedSymbol('В', "(FDBGE)(FBE)(DE)"));
+            }});
+            return response;
+//            return symbolService.encryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
         }
     }
 
-    @PostMapping("/decrypt")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/decrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public SymbolDecryptResponse decrypt(SymbolDecryptRequest request) {
+    public SymbolDecryptResponse decrypt(@RequestBody SymbolDecryptRequest request) {
         try {
-            return symbolService.decryptText(request);
+            SymbolDecryptResponse response = new SymbolDecryptResponse();
+            response.setText("АБВ");
+            return response;
+//            return symbolService.decryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());

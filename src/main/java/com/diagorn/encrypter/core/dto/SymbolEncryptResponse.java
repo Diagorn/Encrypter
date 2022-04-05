@@ -38,5 +38,29 @@ public class SymbolEncryptResponse {
          * Symbol encrypted representation
          */
         private String encrypted;
+
+        public EncryptedSymbol() {
+        }
+
+        public EncryptedSymbol(Character symbol, String encrypted) {
+            this.symbol = symbol;
+            this.encrypted = encrypted;
+        }
+
+        public Character getSymbol() {
+            return symbol;
+        }
+
+        public void setSymbol(Character symbol) {
+            this.symbol = symbol;
+        }
+
+        public String getEncrypted() {
+            return encrypted;
+        }
+
+        public void setEncrypted(String encrypted) {
+            this.encrypted = encrypted;
+        }
     }
 }
