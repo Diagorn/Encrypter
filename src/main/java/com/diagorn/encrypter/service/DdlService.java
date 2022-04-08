@@ -10,14 +10,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
 
 /**
  * A service that rebuilds the database on every app re-run
@@ -31,6 +33,7 @@ public class DdlService implements ApplicationContextAware {
     private String filename;
 
     private ApplicationContext applicationContext;
+
     @PersistenceContext
     private EntityManager entityManager;
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -42,6 +45,7 @@ public class DdlService implements ApplicationContextAware {
     public void execute() {
         //getting all the DDL
         String ddl = readSqlFile();
+        logger.info("read ddl");
 
         //executing one statement at one time
         executeStatements(ddl);
@@ -55,7 +59,7 @@ public class DdlService implements ApplicationContextAware {
     private void executeStatements(String ddl) {
         String[] statements = ddl.split("--split");
         Session session = getSession();
-        Transaction tx = session.beginTransaction();
+        Transaction tx = null;
         for (String statement : statements) {
             try {
                 tx = session.beginTransaction();
@@ -67,6 +71,7 @@ public class DdlService implements ApplicationContextAware {
                 tx.commit();
             }
         }
+        session.close();
     }
 
     /**
@@ -75,16 +80,12 @@ public class DdlService implements ApplicationContextAware {
      * @return SQL to be executed
      */
     private String readSqlFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:" + filename)))) {
-            StringBuilder result = new StringBuilder();
-
-            String line = br.readLine();
-            while (line != null) {
-                result.append(line);
-                line = br.readLine();
-            }
-
-            return result.toString();
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
+            String result = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
+            return result;
         } catch (Exception e) {
             logger.error("Exception while reading SQL file. Context closing now");
             SpringApplication.exit(applicationContext, () -> 0);
