@@ -28,7 +28,6 @@ public class MainRestController {
         this.symbolService = symbolService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/encrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public SymbolEncryptResponse encrypt(@RequestBody SymbolEncryptRequest request) {
@@ -47,7 +46,6 @@ public class MainRestController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/decrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public SymbolDecryptResponse decrypt(@RequestBody SymbolDecryptRequest request) {
