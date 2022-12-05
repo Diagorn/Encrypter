@@ -1,42 +1,45 @@
 package com.diagorn.encrypter.core.domain;
 
-import javax.persistence.*;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.UUID;
 
 /**
  * Symbol class which represents a symbol and it's cyphered self
  *
  * @author Diagorn
  */
-@Entity
-@Table(name = "SYMBOLS_DICT")
-@IdClass(SymbolPk.class)
+
+@Document(collection = "symbols")
 public class Symbol {
+    @Id
+    private String id;
     /**
      * Symbol itself
      **/
-    @Id
-    @Column(name = "SYMBOL")
+    @Field
     private Character symbol;
     /**
      * The language which contains the symbol
      */
-    @Id
-    @Column(name = "LANG")
-    @Enumerated(value = EnumType.STRING)
+    @Field
     private LanguageEnum language;
     /**
      * Symbol encrypted representation
      */
-    @Column(name = "NOTES")
+    @Field
     private String encrypted;
     /**
      * The key in which the symbol is encrypted
      */
-    @Column(name = "MUSIC_KEY", columnDefinition = "VARCHAR")
-    @Enumerated(value = EnumType.STRING)
+    @Field
     private KeyEnum key;
 
     public Symbol() {
+        this.id = UUID.randomUUID().toString();
     }
 
     public Symbol getSelf() {

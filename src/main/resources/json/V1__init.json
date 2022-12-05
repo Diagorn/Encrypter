@@ -1,0 +1,392 @@
+[
+  {
+    "symbol": "А",
+    "encrypted": "(BGE)D(FB)D(BGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Б",
+    "encrypted": "(FDBGE)(FBE)(FG)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "В",
+    "encrypted": "(FDBGE)(FBE)(DG)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Г",
+    "encrypted": "(FDBGE)FF",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Д",
+    "encrypted": "(GE)(BG)(DG)(FG)(DG)(BG)(GE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Е",
+    "encrypted": "(FDBGE)(FBE)(FBE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ж",
+    "encrypted": "(FE)(DB)(FDBGE)(DG)(FE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "З",
+    "encrypted": "(FDE)(FDE)(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "И",
+    "encrypted": "(FDBGE)GBD(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Й",
+    "encrypted": "(FDBGE)G(FB)D(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "К",
+    "encrypted": "(FDBGE)(DG)(FE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Л",
+    "encrypted": "(BGE)DBD(BGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "М",
+    "encrypted": "(FDBGE)DBD(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Н",
+    "encrypted": "(FDBGE)B(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "О",
+    "encrypted": "(FDBGE)(FE)(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "П",
+    "encrypted": "(FDBGE)F(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Р",
+    "encrypted": "(FDBGE)(FB)(FDB)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "С",
+    "encrypted": "(FDBGE)(FE)(FE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Т",
+    "encrypted": "FF(FDBGE)FF",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "У",
+    "encrypted": "(FE)(DG)BDF",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ф",
+    "encrypted": "(FDB)(FDBGE)(FDB)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Х",
+    "encrypted": "(FE)(DG)B(DG)(FE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ц",
+    "encrypted": "(FDBGE)G(FDBGE)(GE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ч",
+    "encrypted": "(FDB)B(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ш",
+    "encrypted": "(FDBGE)E(FDBGE)E(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Щ",
+    "encrypted": "(FDBG)G(FDBG)G(FDBG)GE",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ь",
+    "encrypted": "(FDBGE)(BE)(BGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ы",
+    "encrypted": "(FDBGE)(BE)(BGE)(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ъ",
+    "encrypted": "F(FDBGE)(BE)(BGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Э",
+    "encrypted": "(FBE)(DBG)B",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Ю",
+    "encrypted": "(FDBGE)B(FDBGE)(FE)(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "Я",
+    "encrypted": "(FDBE)(FBG)(FDBGE)",
+    "language": "RUSSIAN",
+    "key": "SOL"
+  },
+  {
+    "symbol": "1",
+    "encrypted": "BD(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "2",
+    "encrypted": "(FGE)(FBE)(FDE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "3",
+    "encrypted": "(FE)(FBE)(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "4",
+    "encrypted": "B(DB)(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "5",
+    "encrypted": "(FDBE)(FBE)(FBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "6",
+    "encrypted": "(FDBGE)(FBE)(BE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "7",
+    "encrypted": "(FE)(FBG)(FB)(FDB)F",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "8",
+    "encrypted": "(FDBGE)(FBE)(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "9",
+    "encrypted": "(FDBE)(FBE)(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "0",
+    "encrypted": "(DBG)(FE)(FE)(DBG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": " ",
+    "encrypted": "",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "!",
+    "encrypted": "FDBE",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "?",
+    "encrypted": "D(FGE)(FB)D",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ".",
+    "encrypted": "E",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ":",
+    "encrypted": "(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ",",
+    "encrypted": "EG",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ";",
+    "encrypted": "E(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "\"",
+    "encrypted": "(FD)(FD)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "(",
+    "encrypted": "(DBG)(FE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ")",
+    "encrypted": "(FE)(DBG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "-",
+    "encrypted": "BBB",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "+",
+    "encrypted": "B(DBG)B",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "=",
+    "encrypted": "(DG)(DG)(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "✕",
+    "encrypted": "(DG)B(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "_",
+    "encrypted": "EE",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "/",
+    "encrypted": "EGBDF",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "\\",
+    "encrypted": "FDBGE",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "|",
+    "encrypted": "(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "<",
+    "encrypted": "B(DG)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": ">",
+    "encrypted": "(DG)B",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "[",
+    "encrypted": "(FDBGE)(FE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "]",
+    "encrypted": "(FE)(FDBGE)",
+    "language": null,
+    "key": "SOL"
+  },
+  {
+    "symbol": "^",
+    "encrypted": "DFD",
+    "language": null,
+    "key": "SOL"
+  }
+]

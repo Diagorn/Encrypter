@@ -1,13 +1,13 @@
-package com.diagorn.encrypter.core.dto;
+package com.diagorn.encrypter.core.dto.response;
 
 /**
- * Response for decryption request
+ * Decryption response
  *
  * @author Diagorn
  */
-public class SymbolDecryptResponse {
+public class DecryptionResponse {
     /**
-     * Decrypted text
+     * Human readable text
      */
     private String text;
 

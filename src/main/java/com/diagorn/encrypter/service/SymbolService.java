@@ -1,15 +1,9 @@
 package com.diagorn.encrypter.service;
 
-import com.diagorn.encrypter.core.domain.KeyEnum;
-import com.diagorn.encrypter.core.domain.LanguageEnum;
-import com.diagorn.encrypter.core.domain.Symbol;
-import com.diagorn.encrypter.core.dto.SymbolDecryptRequest;
-import com.diagorn.encrypter.core.dto.SymbolDecryptResponse;
-import com.diagorn.encrypter.core.dto.SymbolEncryptRequest;
-import com.diagorn.encrypter.core.dto.SymbolEncryptResponse;
-
-import java.util.List;
-import java.util.Map;
+import com.diagorn.encrypter.core.dto.request.DecryptionRequest;
+import com.diagorn.encrypter.core.dto.request.EncryptionRequest;
+import com.diagorn.encrypter.core.dto.response.DecryptionResponse;
+import com.diagorn.encrypter.core.dto.response.EncryptionResponse;
 
 /**
  * A service for working with symbols within the database
@@ -18,37 +12,16 @@ import java.util.Map;
  */
 public interface SymbolService {
     /**
-     * Get all the symbol objects for the concrete key
-     * @param keyEnum key
-     * @return list of symbol objects
-     */
-    Map<Character, Symbol> getAllByKey(KeyEnum keyEnum);
-
-    /**
-     * Get a symbol object for the concrete key and symbol
-     * @param keyEnum key
-     * @param symbol symbol
-     * @return symbol object
-     */
-    Symbol getByKeyAndSymbol(KeyEnum keyEnum, char symbol);
-
-    /**
-     * Get all Symbols from DB
-     * @return map of all symbols
-     */
-    Map<Character, Symbol> getAllSymbols();
-
-    /**
      * Encrypts the given text with a concrete key
      * @param request - request with text to encrypt
      * @return encrypted text
      */
-    SymbolEncryptResponse encryptText(SymbolEncryptRequest request);
+    EncryptionResponse encryptText(EncryptionRequest request);
 
     /**
      * Decrypts the given text
      * @param request - request with encrypted symbols
-     * @return
+     * @return decrypted human-readable text
      */
-    SymbolDecryptResponse decryptText(SymbolDecryptRequest request);
+    DecryptionResponse decryptText(DecryptionRequest request);
 }

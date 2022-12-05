@@ -1,0 +1,9 @@
+db:
+  initFile:
+    name: json/V1__init.json
+
+spring:
+  data:
+    mongodb:
+      database: encrypter
+      uri: mongodb://localhost:27016

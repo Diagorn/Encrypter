@@ -1,9 +1,9 @@
 package com.diagorn.encrypter.rest;
 
-import com.diagorn.encrypter.core.dto.SymbolDecryptRequest;
-import com.diagorn.encrypter.core.dto.SymbolDecryptResponse;
-import com.diagorn.encrypter.core.dto.SymbolEncryptRequest;
-import com.diagorn.encrypter.core.dto.SymbolEncryptResponse;
+import com.diagorn.encrypter.core.dto.request.DecryptionRequest;
+import com.diagorn.encrypter.core.dto.request.EncryptionRequest;
+import com.diagorn.encrypter.core.dto.response.DecryptionResponse;
+import com.diagorn.encrypter.core.dto.response.EncryptionResponse;
 import com.diagorn.encrypter.exception.SymbolNotSupportedException;
 import com.diagorn.encrypter.service.SymbolService;
 import org.slf4j.Logger;
@@ -30,16 +30,9 @@ public class MainRestController {
 
     @PostMapping(value = "/encrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public SymbolEncryptResponse encrypt(@RequestBody SymbolEncryptRequest request) {
+    public EncryptionResponse encrypt(@RequestBody EncryptionRequest request) {
         try {
-            SymbolEncryptResponse response = new SymbolEncryptResponse();
-            response.setSymbols(new ArrayList<SymbolEncryptResponse.EncryptedSymbol>() {{
-                add(new SymbolEncryptResponse.EncryptedSymbol('А', "EGBD(FB)DBGE"));
-                add(new SymbolEncryptResponse.EncryptedSymbol('Б', "(FDBGE)(FBE)(FG)"));
-                add(new SymbolEncryptResponse.EncryptedSymbol('В', "(FDBGE)(FBE)(DE)"));
-            }});
-            return response;
-//            return symbolService.encryptText(request);
+            return symbolService.encryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
@@ -48,12 +41,9 @@ public class MainRestController {
 
     @PostMapping(value = "/decrypt", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public SymbolDecryptResponse decrypt(@RequestBody SymbolDecryptRequest request) {
+    public DecryptionResponse decrypt(@RequestBody DecryptionRequest request) {
         try {
-            SymbolDecryptResponse response = new SymbolDecryptResponse();
-            response.setText("АБВ");
-            return response;
-//            return symbolService.decryptText(request);
+            return symbolService.decryptText(request);
         } catch (IllegalArgumentException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
