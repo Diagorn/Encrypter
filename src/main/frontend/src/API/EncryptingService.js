@@ -8,14 +8,14 @@ export default class EncryptingService {
 
         const response = axios.post(
             url, {
-                text: 'Hello'
+                request: text
             }, 
             {
                 headers: {
                     'Content-Type': 'application/json',
             }
         }).then((res) => {
-            console.log(res)
+            return res
         }).catch(e => console.log(e))
         
         
@@ -24,37 +24,16 @@ export default class EncryptingService {
 
     static async decrypt(text) {
         let url = this.SERVER_ADDRESS + '/api/v1/decrypt'
-        let test = [
-            {
-                text: 'A'
-            },
-            {
-                text: 'A'
-            },
-            {
-                text: 'A'
-            },
-            {
-                text: 'A'
-            },
-            {
-                text: 'A'
-            },
-            {
-                text: 'A'
-            }
-        ]
 
         const response = axios.post(
             url, {
-                text: test
+                text: text,
+                key: 'SOL'
             }, 
             {
                 headers: {
                     'Content-Type': 'application/json',
             }
-        }).then((res) => {
-            console.log(res)
         }).catch(e => console.log(e))
         
         
