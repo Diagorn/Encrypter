@@ -50,6 +50,7 @@ public class DbInitService implements ApplicationContextAware {
         String json = getJson();
         List<Symbol> initialList = parse(json);
         saveToDb(initialList);
+        logger.info("Loaded all symbols to DB");
     }
 
     /**

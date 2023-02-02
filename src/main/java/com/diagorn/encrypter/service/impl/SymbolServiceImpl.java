@@ -28,6 +28,7 @@ public class SymbolServiceImpl implements SymbolService {
         Map<Character, Symbol> symbols = symbolsRegistry.getAllByKeyAsMap(KeyEnum.SOL);
 
         String requestString = request.getRequest().toUpperCase();
+        requestString = replaceExtraSymbols(requestString);
         List<String> result = new ArrayList<>();
 
         for (Character c: requestString.toCharArray()) {
@@ -55,63 +56,9 @@ public class SymbolServiceImpl implements SymbolService {
         return response;
     }
 
-    private Symbol getSymbolByEncrypted(Map<Character, Symbol> allSymbols, KeyEnum key, String encrypted) {
-        for (Map.Entry<Character, Symbol> entry: allSymbols.entrySet()) {
-            if (entry.getValue().getKey().equals(key)
-                    && entry.getValue().getEncrypted().equalsIgnoreCase(encrypted)) {
-                return entry.getValue();
-            }
-        }
-        return null;
+    private String replaceExtraSymbols(String requestString) {
+        return requestString
+                .replaceAll("Ё", "Е")
+                .replaceAll("—", "-");
     }
-
-    private boolean isSpecialSymbol(Character c) {
-        return specialSymbols.contains(c);
-    }
-
-    private boolean isRussian(Character c) {
-        if (c == null)
-            throw new IllegalStateException("Cannot tell which language null belongs to");
-
-        return Character.UnicodeBlock.of(c) == Character.UnicodeBlock.CYRILLIC;
-    }
-
-    private boolean isEnglish(Character c) {
-        if (c == null)
-            throw new IllegalStateException("Cannot tell which language null belongs to");
-
-        return Character.UnicodeBlock.of(c) == Character.UnicodeBlock.BASIC_LATIN;
-    }
-
-    //List of symbols that don't belong to any language
-    private final List<Character> specialSymbols = new ArrayList<Character>() {{
-        add('.');
-        add('!');
-        add('?');
-        add('-');
-        add('=');
-        add('1');
-        add('2');
-        add('3');
-        add('4');
-        add('5');
-        add('6');
-        add('7');
-        add('8');
-        add('9');
-        add('0');
-        add('\\');
-        add('/');
-        add(':');
-        add(';');
-        add('$');
-        add('(');
-        add(')');
-        add('~');
-        add('$');
-        add('%');
-        add('>');
-        add('<');
-        add(' ');
-    }};
 }
