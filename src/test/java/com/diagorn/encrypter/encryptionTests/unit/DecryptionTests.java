@@ -76,7 +76,7 @@ public class DecryptionTests {
     private String getRussianLettersText() {
         return "(BGE)D(FB)D(BGE),(FDBGE)(FBE)(FG),(FDBGE)(FBE)(DG),(FDBGE)FF,(GE)(BG)(DG)(FG)(DG)(BG)(GE),(FDBGE)(FBE)(FBE)," +
                 "(FDBGE)(FBE)(FBE),(FE)(DB)(FDBGE)(DG)(FE),(FDE)(FDE)(FDBGE),(FDBGE)GBD(FDBGE),(FDBGE)G(FB)D(FDBGE),(FDBGE)" +
-                "(DG)(FE),(BGE)DBD(BGE),(FDBGE)DBD(FDBGE),(FDBGE)B(FDBGE),(FDBGE)(FE)(FDBGE),(FDBGE)F(FDBGE),(FDBGE)(FB)(FDB)," +
+                "(DG)(FE),(BGE)DFD(BGE),(FDBGE)DBD(FDBGE),(FDBGE)B(FDBGE),(FDBGE)(FE)(FDBGE),(FDBGE)F(FDBGE),(FDBGE)(FB)(FDB)," +
                 "(FDBGE)(FE)(FE),FF(FDBGE)FF,(FE)(DG)BDF,(FDB)(FDBGE)(FDB),(FE)(DG)B(DG)(FE),(FDBGE)G(FDBGE)(GE),(FDB)B(FDBGE)," +
                 "(FDBGE)E(FDBGE)E(FDBGE),(FDBG)G(FDBG)G(FDBG)GE,(FDBGE)(BE)(BGE),(FDBGE)(BE)(BGE)(FDBGE),F(FDBGE)(BE)(BGE)," +
                 "(FBE)(DBG)B,(FDBGE)B(FDBGE)(FE)(FDBGE),(FDBE)(FBG)(FDBGE)";
