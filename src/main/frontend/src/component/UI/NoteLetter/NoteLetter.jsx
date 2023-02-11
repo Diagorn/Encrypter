@@ -1,15 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react"
 import classes from './NoteLetter.module.css'
 
 export default function NoteLetter(props) {
-    
-    const [dots, setDots] = useState([])
-
-    useEffect(() => {
-        let dotsArr = splitText(props.encryptedText)
-        setDots(dotsArr)
-    }, [])
 
     function splitText(text) {
         let result = []
