@@ -9,7 +9,6 @@ export default function NoteLetter(props) {
     useEffect(() => {
         let dotsArr = splitText(props.encryptedText)
         setDots(dotsArr)
-        console.log(dotsArr)
     }, [])
 
     function splitText(text) {

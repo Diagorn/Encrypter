@@ -33,7 +33,7 @@ public class MainRestController {
     public EncryptionResponse encrypt(@RequestBody EncryptionRequest request) {
         try {
             return symbolService.encryptText(request);
-        } catch (IllegalArgumentException e) {
+        } catch (RuntimeException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
         }
@@ -44,7 +44,7 @@ public class MainRestController {
     public DecryptionResponse decrypt(@RequestBody DecryptionRequest request) {
         try {
             return symbolService.decryptText(request);
-        } catch (IllegalArgumentException e) {
+        } catch (RuntimeException e) {
             logger.info("Caught SymbolNotSupportedException while encrypting! Message: " + e.getMessage());
             throw new SymbolNotSupportedException(e.getMessage());
         }

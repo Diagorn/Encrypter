@@ -24,7 +24,9 @@ export const Form = () => {
                 setServerText(encryptedText)
                 setNotesText(encryptedText)
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                alert('Не получилось зашифровать текст\nПожалуйста, передайте информацию разработчику')
+            })
     }
 
     function decrypt() {
@@ -33,7 +35,9 @@ export const Form = () => {
                 setServerText(res.data.text)
                 setNotesText('')
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                alert('Не получилось расшифровать текст\nПожалуйста, передайте информацию разработчику')
+            })
     }
 
     function saveToClipboard() {

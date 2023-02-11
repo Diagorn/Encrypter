@@ -32,7 +32,11 @@ public class SymbolServiceImpl implements SymbolService {
         List<String> result = new ArrayList<>();
 
         for (Character c: requestString.toCharArray()) {
-            result.add(symbols.get(c).getEncrypted());
+            try {
+                result.add(symbols.get(c).getEncrypted());
+            } catch (NullPointerException e) {
+                throw new IllegalArgumentException("Cannot resolve symbol '" + c + "' while encrypting");
+            }
         }
 
         EncryptionResponse response = new EncryptionResponse();
@@ -48,7 +52,11 @@ public class SymbolServiceImpl implements SymbolService {
         StringBuilder sb = new StringBuilder();
 
         for (String encrypted: encryptedData) {
-            sb.append(symbols.get(encrypted).getSymbol());
+            try {
+                sb.append(symbols.get(encrypted).getSymbol());
+            } catch (NullPointerException e) {
+                throw new IllegalArgumentException("Cannot resolve text \"" + encrypted + "\" while decrypting");
+            }
         }
 
         DecryptionResponse response = new DecryptionResponse();
@@ -59,6 +67,8 @@ public class SymbolServiceImpl implements SymbolService {
     private String replaceExtraSymbols(String requestString) {
         return requestString
                 .replaceAll("Ё", "Е")
-                .replaceAll("—", "-");
+                .replaceAll("—", "-")
+                .replaceAll("\n", " ")
+                .replaceAll("\t", "    ");
     }
 }
