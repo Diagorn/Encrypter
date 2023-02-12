@@ -3,22 +3,24 @@ version: '2'
 services:
   backend:
     image: 'encrypter:latest'
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: backend
     depends_on:
-      - db
+      - mongodb
     ports:
-      - "8080:8080"
+      - "8085:8085"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/encrypter
-      - SPRING_DATASOURCE_USERNAME=compose-postgres
-      - SPRING_DATASOURCE_PASSWORD=compose-postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_DB_HOST=mongodb
+      - SPRING_DB_PORT=27017
+      - SPRING_DATABASE=encrypter
 
-  db:
-    image: 'postgres:13.1-alpine'
+  mongodb:
+    image: 'mongo:4.4.3'
+    restart: always
+    ports:
+      - "27017:27017"
     container_name: db
-    environment:
-      - POSTGRES_USER=compose-postgres
-      - POSTGRES_PASSWORD=compose-postgres
-      - POSTGRES_DB=encrypter
+    volumes:
+      - ./mongo-init.js:/docker-enrtypoint-initdb.d/mongo-init.js:ro

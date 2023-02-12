@@ -1,5 +1,13 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
+#build
+FROM anonymoussquad/bitbucket-jdk-11-slim AS build
 MAINTAINER Diagorn
-COPY target/encrypter.jar encrypter.jar
-ENTRYPOINT ["java", "-jar", "/encrypter.jar"]
-EXPOSE 8080
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#run
+FROM openjdk:11-jre-slim
+MAINTAINER Diagorn
+COPY --from=build /home/app/target /usr/local/lib
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/encrypter.jar"]
+EXPOSE 8085

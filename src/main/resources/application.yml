@@ -5,5 +5,9 @@ db:
 spring:
   data:
     mongodb:
-      database: encrypter
-      uri: mongodb://localhost:27016
+      database: ${SPRING_DATABASE:encrypter}
+      host: ${SPRING_DB_HOST:localhost}
+      port: ${SPRING_DB_PORT:27017}
+
+server:
+  port: 8085
